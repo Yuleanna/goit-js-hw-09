@@ -17,7 +17,7 @@ const saveForm = () => {
   if (savedData) {
     const { email, message } = JSON.parse(savedData);
     emailInput.value = email;
-    messageInput = message;
+    messageInput.value = message;
     formData.email = email;
     formData.message = message;
   }
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', saveForm);
 
 form.addEventListener('input', event => {
   const { name, value } = event.target;
-  formData[name] = value;
+  formData[name] = value.trim();
   savetoLocalStorage();
 });
 
@@ -38,7 +38,6 @@ form.addEventListener('submit', event => {
   }
   console.log('Form data:', formData);
   localStorage.removeItem('feedback-form-state');
-  formData.email = '';
-  formData.message = '';
+
   form.reset();
 });
