@@ -32,7 +32,7 @@ form.addEventListener('input', event => {
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  if (!emailInput.value || !messageInput.value) {
+  if (!emailInput.value.trim() || !messageInput.value.trim()) {
     alert('Fill please all fields');
     return;
   }
